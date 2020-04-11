@@ -1,0 +1,29 @@
+{
+  "name": "electron-mysql-crud",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecanavesio/electron-mysql-crud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ecanavesio/electron-mysql-crud/issues"
+  },
+  "homepage": "https://github.com/ecanavesio/electron-mysql-crud#readme",
+  "keywords": [
+    "electron",
+    "mysql",
+    "crud"
+  ],
+  "author": "Emanuel Canavesio",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^8.2.1",
+    "promise-mysql": "^4.1.3"
+  }
+}
