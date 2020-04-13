@@ -1,4 +1,16 @@
 const {BrowserWindow} = require('electron');
+const {getConnection} = require('./database');
+
+async function createProduct(product){
+    try{
+        const conn = await getConnection();
+        product.price = parseFloat(product.price);
+        const result = await conn.query('INSERT INTO products SET ?', product);
+        console.log(result);
+    } catch(error){
+        console.error(error);
+    }
+}
 
 function createWindow() {
     const window = new BrowserWindow({
@@ -12,5 +24,6 @@ function createWindow() {
 }
 
 module.exports = {
-    createWindow
+    createWindow,
+    createProduct
 };

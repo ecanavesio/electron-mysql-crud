@@ -23,6 +23,7 @@
   "author": "Emanuel Canavesio",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "electron": "^8.2.1",
     "promise-mysql": "^4.1.3"
   }
