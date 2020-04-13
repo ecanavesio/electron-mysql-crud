@@ -23,6 +23,16 @@ async function getProducts() {
     }
 }
 
+async function deleteProduct(id){
+    try{
+        const conn = await getConnection();
+        const result = await conn.query("DELETE FROM products WHERE id=?",id);
+        return result;
+    } catch(error){
+        console.error(error);
+    }
+}
+
 function createWindow() {
     const window = new BrowserWindow({
         width: 800,
@@ -37,5 +47,6 @@ function createWindow() {
 module.exports = {
     createWindow,
     createProduct,
-    getProducts
+    getProducts,
+    deleteProduct
 };

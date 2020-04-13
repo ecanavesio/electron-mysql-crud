@@ -7,7 +7,6 @@ const productName = document.getElementById("name");
 const productPrice = document.getElementById("price");
 const productDescription = document.getElementById("description");
 
-let products = [];
 const productsList = document.getElementById("products");
 
 productForm.addEventListener('submit', async (e) => {
@@ -24,16 +23,15 @@ productForm.addEventListener('submit', async (e) => {
 });
 
 const renderNewProduct = product => {
-    products.unshift(product);
     productsList.innerHTML = renderProduct(product) + productsList.innerHTML;
 }
 
 const getProducts = async () => {
-    products = await main.getProducts();
-    renderProducts();
+    const products = await main.getProducts();
+    renderProducts(products);
 }
 
-const renderProducts = () => {
+const renderProducts = products => {
     productsList.innerHTML = '';
     products.forEach( product => {
         productsList.innerHTML += renderProduct(product);
@@ -41,16 +39,25 @@ const renderProducts = () => {
 }
 
 const renderProduct = product => `
-    <div class="card card-body my-2 animated fadeInLeft">
+    <div class="card card-body my-2 animated fadeInLeft" id="product-${product.id}">
         <h4>${product.name}</h4>
         <p>${product.description}</p>
         <h3>${product.price}</h3>
         <p>
-            <button class="btn btn-danger">DELETE</button>
+            <button class="btn btn-danger" onclick="deleteProduct(${product.id})">DELETE</button>
             <button class="btn btn-secondary">EDIT</button>
         </p>
     </div>
 `;
+
+const deleteProduct = async idProduct => {
+    const response = confirm('Are your sure you want to delete it?');
+    if(response){
+        await main.deleteProduct(idProduct);
+        document.getElementById(`product-${idProduct}`).remove();
+    }
+    return;
+}
 
 async function init(){
     await getProducts();
