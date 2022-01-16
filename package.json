@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "electron": "^8.2.1",
+    "electron": "^11.5.0",
     "promise-mysql": "^4.1.3"
   }
 }
